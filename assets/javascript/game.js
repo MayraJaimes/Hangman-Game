@@ -1,48 +1,83 @@
-// Create words
+//Global variables
+var numWins= 0;
+var numLosses = 0;
+var remainTries = 10;
+var outcome;
 
+//Arrays
 var words = ["doctor", "teacher", "police", "firefighter"];
+var answerArray = [];
+var wrongGuessArray = [];
+var rightGuessArray = [];
 
-//Pick random word from the array
+var userGuess;
 
-var currentWord = words[Math.floor(Math.random() * words.length)];
+//Picks random word from the words array
 
-//Create array of underscores equal to the number of letters
+var randomWord = words [Math.floor(Math.random() * words.length)];
 
-var lettersArray = [];
-
-for (var i = 0; i < currentWord.length; i++) {
-    lettersArray[i] = "_ ";
+for (var i = 0; i < randomWord.length; i++) {
+	    answerArray.push('_');
+	    document.getElementById("answerArray").textContent = answerArray.join(" ");
+	    document.getElementById("remainTries").textContent = remainTries;
 	}
 
-document.getElementById("lettersArray").textContent = lettersArray;
-
-
-// This function is run whenever the user presses a key. Then its determined which key was pressed.
+// Determines which key was pressed.
 document.onkeyup = function(event) {
-var userGuess = event.key; }
+	var userGuess = event.key;
+
+//Conditional statements for right and wrong guesses:
+
+	if (randomWord.indexOf(userGuess) > -1) {
+		for (var j = 0; j < randomWord.length; j++){
+			if (randomWord[j] === userGuess) {
+				answerArray[j] = userGuess;
+				rightGuessArray.push(userGuess);
+				document.getElementById("rightGuessArray").textContent = rightGuessArray.join(" ");
+			}
+		}
+	}
+
+	else {
+		wrongGuessArray.push(userGuess);
+		document.getElementById("wrongGuessArray").textContent = wrongGuessArray.join(" ");
+		remainTries --;
+		document.getElementById("remainTries").textContent = remainTries;
+	}
+
+//Conditional statements for win and loss games:
+	if (answerArray === randomWord) {
+		numWins ++;
+        outcome = "You won!";
+        document.getElementById("numWins").textContent = numWins;
+	}
+
+	else if (remainTries === 0) {
+		numLosses ++;
+        outcome = "You lost!";
+        document.getElementById("numLosses").textContent = numLosses;
+         document.getElementById("outcome").textContent = outcome;
+    }
+}
 
 
-//IF correct add the letter to the array and decrease the remaining letters number.
-//IF incorrect add the userGuess to the wrongGuessArray and decrease the remaining tries number. 
 
-var remainLetters = word.length;
-var wrongGuessArray = [];
-var remainTries = 15;
 
-	for (var j = 0; j < currentWord.length; j++) {
 
-		if (currentWord[j] === userGuess) {
-	    letterArray[j] = useGuess;
-		remainLetters--;
-	    }
 
-	    else {
-	    wrongGuessArray.push(userGuess);
-	    remainTries--;
-	    }
-  }
 
-document.getElementById("remainLetters").textContent = remainLetters;
-document.getElementById("wrongGuessArray").textContent = wrongGuessArray;
-document.getElementById("remainTries").textContent = remainTries;
+/*
+	//After win or lose pick a new word display play new game button next to reset button
+
+	//When play new game is pressed, reset 
+
+	//IF click reset everything: numWins, numLosses, remainLetters, wrongGuessArray, remainTries, letters array, 
+	var reset = 0;
+
+	while (remainingLetters > 0) {
+	}
+}
+
+*/
+
 
