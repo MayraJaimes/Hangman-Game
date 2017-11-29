@@ -14,6 +14,23 @@ var userGuess;
 
 //Picks random word from the words array
 
+
+function resetNewWord(){
+	document.onkeyup = function(event) {
+	var userGuess = event.key;
+	if (event.keyCode = 12){
+		remainTries = 10;
+		document.getElementById("remainTries").textContent = remainTries;
+		outcome = "";
+		document.getElementById("outcome").textContent = outcome;
+		}
+	}
+}
+
+function resetNewGame(){
+
+}
+
 var randomWord = words [Math.floor(Math.random() * words.length)];
 
 for (var i = 0; i < randomWord.length; i++) {
@@ -22,11 +39,14 @@ for (var i = 0; i < randomWord.length; i++) {
 	}
 
 		document.getElementById("answerArray").textContent = answerArray.join(" ");
+
 // Determines which key was pressed.
 document.onkeyup = function(event) {
 	var userGuess = event.key;
 	if (event.keyCode >= 65 && event.keyCode <= 90){
 
+
+//Conditional statements for right and wrong guesses:
 
 	if (randomWord.indexOf(userGuess) > -1) {
 		for (var j = 0; j < randomWord.length; j++){
@@ -52,13 +72,15 @@ document.onkeyup = function(event) {
 		document.getElementById("numWins").textContent = numWins;
         outcome = "You won!";
         document.getElementById("outcome").textContent = outcome;
+        resetNewWord();
 	}
 
 	else if (remainTries === 0) {
 		numLosses ++;
         outcome = "You lost!";
         document.getElementById("numLosses").textContent = numLosses;
-         document.getElementById("outcome").textContent = outcome;
+        document.getElementById("outcome").textContent = outcome;
+        resetNewWord();
     }
 
 	else {
