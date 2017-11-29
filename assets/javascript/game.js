@@ -18,24 +18,25 @@ var randomWord = words [Math.floor(Math.random() * words.length)];
 
 for (var i = 0; i < randomWord.length; i++) {
 	    answerArray.push('_');
-	    document.getElementById("answerArray").textContent = answerArray.join(" ");
 	    document.getElementById("remainTries").textContent = remainTries;
 	}
 
+		document.getElementById("answerArray").textContent = answerArray.join(" ");
 // Determines which key was pressed.
 document.onkeyup = function(event) {
 	var userGuess = event.key;
+	if (event.keyCode >= 65 && event.keyCode <= 90){
 
-//Conditional statements for right and wrong guesses:
 
 	if (randomWord.indexOf(userGuess) > -1) {
 		for (var j = 0; j < randomWord.length; j++){
 			if (randomWord[j] === userGuess) {
-				answerArray[j] = userGuess;
-				rightGuessArray.push(userGuess);
-				document.getElementById("rightGuessArray").textContent = rightGuessArray.join(" ");
+				answerArray[j] = userGuess;	
 			}
 		}
+	document.getElementById("answerArray").textContent = answerArray.join(" ");
+	rightGuessArray.push(userGuess);
+	document.getElementById("rightGuessArray").textContent = rightGuessArray.join(" ");
 	}
 
 	else {
@@ -46,10 +47,11 @@ document.onkeyup = function(event) {
 	}
 
 //Conditional statements for win and loss games:
-	if (answerArray === randomWord) {
+	if (answerArray.join("") === randomWord) {
 		numWins ++;
+		document.getElementById("numWins").textContent = numWins;
         outcome = "You won!";
-        document.getElementById("numWins").textContent = numWins;
+        document.getElementById("outcome").textContent = outcome;
 	}
 
 	else if (remainTries === 0) {
@@ -58,7 +60,19 @@ document.onkeyup = function(event) {
         document.getElementById("numLosses").textContent = numLosses;
          document.getElementById("outcome").textContent = outcome;
     }
+
+	else {
+		return;
+	}
 }
+}
+
+ 
+
+
+//Conditional statements for right and wrong guesses:
+
+
 
 
 
