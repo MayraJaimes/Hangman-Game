@@ -2,36 +2,52 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<title></title>
 
 </head>
 <body>
 	<header>
-		
+		<p> Lets play Hangman!</p>
 	</header>
 
-	<div id="game">
-	      <p> Hangman:</p>
-	      <br>
-	      <p>Guess a letter and press the key on your keyboard to see if you guessed correctly or not. Everytime you guess incorrectly the number of guesses you can make will decrease.</p>
-	      <p> <span id="test"></span></p>
+	<div class="clearfix">
+	</div>
 
+	<div id="game">
+
+		<div class="mainContent">
+	      <p class="instructions">How to play: Guess a letter and press the key on your keyboard to see if you guessed correctly or not. Everytime you guess incorrectly the number of guesses you can make will decrease.</p> <br>
+	      <p>Theme: Professions</p>
 	      <p> <span id="answerArray"></span></p>
 	      <p>Number of guesses remaining: <span id="remainTries"></span></p>
 	      <br>
 	      <p>Letters guessed correctly: <span id="rightGuessArray"></span></p>
   	      <p>Letters guessed incorrectly: <span id="wrongGuessArray"></span></p>
+  	    </div>
+
+  	    <div class="score">
 	      <br>
 	      <p>Game outcome <span id="outcome"></span></p>
 	      <p>Number of wins: <span id="numWins"></span></p>
 	      <p>Number of losses: <span id="numLosses"></span></p>
+		</div>
 
+		<div class="clearfix">
+		</div>
 
+		<div class="button">
 	      <p>Reset: <span id="reset"></span></p>
+	     </div>
+
+	    <div class="clearfix">
+		</div>
+
+	    <footer>
+			<p> Mayra Jaimes </p>
+	    </footer>
 	</div>
 
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
