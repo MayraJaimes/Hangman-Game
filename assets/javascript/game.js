@@ -10,7 +10,7 @@ var randomWord;
 var gameOver = false;
 
 //Arrays
-var words = ["doctor", "teacher", "police", "firefighter"];
+var words = ["DOCTOR", "TEACHER", "POLICE", "NURSE"];
 var answerArray = [];
 var wrongGuessArray = [];
 var rightGuessArray = [];
@@ -61,7 +61,7 @@ function startGame(){
 	generateUnderscore();
 
 	document.onkeyup = function(event) {
-	userGuess = event.key;
+	userGuess = event.key.toUpperCase();
 
 		if (event.keyCode === 83 && gameOver == true){
 			resetNextGame();
@@ -90,13 +90,13 @@ function startGame(){
 			//Conditional statements for win and loss games:
 			if (answerArray.join("") === randomWord) {
 				numWins ++;
-		        outcome = "You won!";
+		        outcome = 'YOU WON! Press "s" to play another word';
 		        gameOver = true;
 		        numWinsContent.textContent = numWins;
 		        outcomeContent.textContent = outcome;
 			} else if (remainTries === 0) {
 				numLosses ++;
-		        outcome = "You lost!";
+		        outcome = 'YOU LOST! Press "s" to play another word';
 		        gameOver = true;
 		        numLossesContent.textContent = numLosses;
 		        outcomeContent.textContent = outcome;
