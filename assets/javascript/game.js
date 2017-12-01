@@ -63,7 +63,7 @@ function startGame(){
 		if (event.keyCode >= 65 && event.keyCode <= 90){
 
 			//Conditional statements for right and wrong guesses:
-			if (randomWord.indexOf(userGuess) > -1) {
+			if (randomWord.includes(userGuess) > -1) {
 				for (var j = 0; j < randomWord.length; j++){
 					if (randomWord[j] === userGuess) {
 						answerArray[j] = userGuess;	
