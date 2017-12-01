@@ -63,7 +63,7 @@ function startGame(){
 	document.onkeyup = function(event) {
 	userGuess = event.key;
 
-		if (event.keyCode === "s" && gameOver == true){
+		if (event.keyCode === 83 && gameOver == true){
 			resetNextGame();
 			startGame();
 		}
