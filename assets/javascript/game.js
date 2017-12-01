@@ -3,6 +3,9 @@ var numWins = 0;
 var numLosses = 0;
 var remainTries = 10;
 var outcome;
+var currentWordPos;
+var userGuess;
+var randomWord;
 
 //Arrays
 var words = ["doctor", "teacher", "police", "firefighter"];
@@ -10,10 +13,7 @@ var answerArray = [];
 var wrongGuessArray = [];
 var rightGuessArray = [];
 
-var userGuess;
-
-var randomWord = words [Math.floor(Math.random() * words.length)];
-
+//Variables to get Elements
 var wrongGuessContent = document.getElementById("wrongGuessContent");
 var rightGuessContent = document.getElementById("rightGuessContent");
 var answerContent = document.getElementById("answerContent");
@@ -22,18 +22,21 @@ var outcomeContent = document.getElementById("outcomeContent");
 var numWinsContent = document.getElementById("numWinsContent");
 var numLossesContent = document.getElementById("numLossesContent")
 
-//List of Functions:
-
+//Functions:
 function generateWord() {
-	var randomWord = words[Math.floor(Math.random() * words.length)];
+  var wordPos = Math.floor(Math.random() * words.length);
+  if (currentWordPos === wordPos) {
+    generateWord();
+  } else {
+    currentWordPos = wordPos;
+    randomWord = words[wordPos];
+  }
 };
 
 function generateUnderscore () {
 	for (var i = 0; i < randomWord.length; i++) {
 		answerArray.push('_');
 	}
-	remainTries.textContent = remainTries;
-	answerArray.textContent = answerArray.join(" ");
 };
 
 function resetNextGame() {
@@ -45,9 +48,9 @@ function resetNextGame() {
 			answerArray = [];
 			remainTries = 10;
 			outcome = " ";
-			wrongGuessContent.textContent = wrongGuessContent;
-			rightGuessContent.textContent = rightGuessContent;
-			answerContent.textContent = answerContent;
+			wrongGuessContent.textContent = wrongGuessArray;
+			rightGuessContent.textContent = rightGuessArray;
+			answerContent.textContent = answerArray;
 			remainTriesContent.textContent = remainTries;
 			outcomeContent.textContent = outcome;
 		}
@@ -55,23 +58,23 @@ function resetNextGame() {
 };
 
 function startGame(){
-	generateWord();
-	generateUnderscore();
+generateWord();
+generateUnderscore();
 
 	document.onkeyup = function(event) {
 	userGuess = event.key;
 		if (event.keyCode >= 65 && event.keyCode <= 90){
 
 			//Conditional statements for right and wrong guesses:
-			if (randomWord.includes(userGuess) > -1) {
+			if (randomWord.indexOf(userGuess) > -1) {
 				for (var j = 0; j < randomWord.length; j++){
 					if (randomWord[j] === userGuess) {
 						answerArray[j] = userGuess;	
 					}
 				}
-			answerContent.textContent = answerArray.join(" ");
-			rightGuessArray.push(userGuess);
-			rightGuessContent.textContent = rightGuessArray.join(" ");
+				rightGuessArray.push(userGuess);
+				answerContent.textContent = answerArray.join(" ");
+				rightGuessContent.textContent = rightGuessArray.join(" ");
 
 			} else {
 				wrongGuessArray.push(userGuess);
