@@ -12,16 +12,16 @@
 <body>
 	<div class="container">
 		<header>
-			<div class="headerContainer">
+			<div class="headerContainer jumbotron">
 				<h1> Lets play Hangman!</h1>
+				<p>How to play: Guess a letter and press the key on your keyboard to see if you guessed correctly or not. Everytime you guess incorrectly the number of guesses you can make will decrease. Press any key to get started!</p>
 			</div>
 		</header>
 		<main>
 			<div class="contentContainer">
 				<div class="topSection">
 					<div class="description">
-						<h2>How to play: Guess a letter and press the key on your keyboard to see if you guessed correctly or not. Everytime you guess incorrectly the number of guesses you can make will decrease. Press any key to get started!</h2>
-						<h3>Theme: Professions</h3>
+						<p>Theme: Professions</p>
 					</div>
 				</div>
 				<div class="middleSection">
@@ -34,11 +34,36 @@
 					</div>
 				</div>			
 				<div class="bottomSection">
-					<div class="scores">
-						<p>Number of guesses remaining: <span id="remainTriesContent"></span></p>
-		      			<p class=".col-sm-6 .col-md-5 .col-lg-6">Game outcome <span id="outcomeContent"></span></p>
-		      			<p>Number of wins: <span id="numWinsContent"></span></p>
-		      			<p>Number of losses: <span id="numLossesContent"></span></p>
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Number of guesses remaining</h3>
+					  </div>
+					  <div id="remainTriesContent" class="panel-body">
+					  </div>
+					</div>
+
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Game outcome</h3>
+					  </div>
+					  <div id="outcomeContent" class="panel-body">
+					  </div>
+					</div>
+
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Number of wins</h3>
+					  </div>
+					  <div id="numWinsContent" class="panel-body">
+					  </div>
+					</div>
+
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Number of losses</h3>
+					  </div>
+					  <div id="numLossesContent" class="panel-body">
+					  </div>
 					</div>
 				</div>
 			</div>
@@ -50,3 +75,8 @@
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
+
+
+
+
+
