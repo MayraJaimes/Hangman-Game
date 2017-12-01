@@ -1,4 +1,5 @@
 //Global variables
+var d = document;
 var numWins = 0;
 var numLosses = 0;
 var remainTries = 10;
@@ -6,6 +7,7 @@ var outcome;
 var currentWordPos;
 var userGuess;
 var randomWord;
+var gameOver = false;
 
 //Arrays
 var words = ["doctor", "teacher", "police", "firefighter"];
@@ -14,13 +16,13 @@ var wrongGuessArray = [];
 var rightGuessArray = [];
 
 //Variables to get Elements
-var wrongGuessContent = document.getElementById("wrongGuessContent");
-var rightGuessContent = document.getElementById("rightGuessContent");
-var answerContent = document.getElementById("answerContent");
-var remainTriesContent = document.getElementById("remainTriesContent");
-var outcomeContent = document.getElementById("outcomeContent");
-var numWinsContent = document.getElementById("numWinsContent");
-var numLossesContent = document.getElementById("numLossesContent")
+var wrongGuessContent = d.getElementById("wrongGuessContent");
+var rightGuessContent = d.getElementById("rightGuessContent");
+var answerContent = d.getElementById("answerContent");
+var remainTriesContent = d.getElementById("remainTriesContent");
+var outcomeContent = d.getElementById("outcomeContent");
+var numWinsContent = d.getElementById("numWinsContent");
+var numLossesContent = d.getElementById("numLossesContent")
 
 //Functions:
 function generateWord() {
@@ -37,33 +39,36 @@ function generateUnderscore () {
 	for (var i = 0; i < randomWord.length; i++) {
 		answerArray.push('_');
 	}
+	answerContent.textContent = answerArray.join(" ");
 };
 
 function resetNextGame() {
-	document.onkeyup = function(event) {
-		userGuess = event.key;
-		if (event.keyCode = 12){
-			wrongGuessArray = [];
-			rightGuessArray = [];
-			answerArray = [];
-			remainTries = 10;
-			outcome = " ";
-			wrongGuessContent.textContent = wrongGuessArray;
-			rightGuessContent.textContent = rightGuessArray;
-			answerContent.textContent = answerArray;
-			remainTriesContent.textContent = remainTries;
-			outcomeContent.textContent = outcome;
-		}
-	}
+	gameOver = false;	
+	wrongGuessArray = [];
+	rightGuessArray = [];
+	answerArray = [];
+	remainTries = 10;
+	outcome = " ";
+	wrongGuessContent.textContent = wrongGuessArray;
+	rightGuessContent.textContent = rightGuessArray;
+	answerContent.textContent = answerArray;
+	remainTriesContent.textContent = remainTries;
+	outcomeContent.textContent = outcome;
 };
 
 function startGame(){
-generateWord();
-generateUnderscore();
+	generateWord();
+	generateUnderscore();
 
 	document.onkeyup = function(event) {
 	userGuess = event.key;
-		if (event.keyCode >= 65 && event.keyCode <= 90){
+
+		if (event.keyCode === "s" && gameOver == true){
+			resetNextGame();
+			startGame();
+		}
+		
+		else if (event.keyCode >= 65 && event.keyCode <= 90 && gameOver == false){
 
 			//Conditional statements for right and wrong guesses:
 			if (randomWord.indexOf(userGuess) > -1) {
@@ -82,20 +87,19 @@ generateUnderscore();
 				wrongGuessContent.textContent = wrongGuessArray.join(" ");
 				remainTriesContent.textContent = remainTries;
 			}
-
 			//Conditional statements for win and loss games:
 			if (answerArray.join("") === randomWord) {
 				numWins ++;
 		        outcome = "You won!";
+		        gameOver = true;
 		        numWinsContent.textContent = numWins;
 		        outcomeContent.textContent = outcome;
-		        resetNextGame();
 			} else if (remainTries === 0) {
 				numLosses ++;
 		        outcome = "You lost!";
+		        gameOver = true;
 		        numLossesContent.textContent = numLosses;
 		        outcomeContent.textContent = outcome;
-		        resetNextGame();
 		    }
 		}
 	}
