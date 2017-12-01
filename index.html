@@ -23,45 +23,73 @@
 					<div class="description">
 						<p>Theme: Professions</p>
 					</div>
-				</div>
-				<div class="middleSection">
 					<div class="wordGenerated">
 						<p> <span id="answerContent"></span></p>
 					</div>
-					<div class="playerInputs">
-						<p>Letters guessed correctly: <span id="rightGuessContent"></span></p>
-	  	     			<p>Letters guessed incorrectly: <span id="wrongGuessContent"></span></p>
+				</div>
+				<div class="middleSection">
+					<div class="row playerInputs">
+						<div class="col-md-6">
+							<div class="panel panel-danger">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Letters guessed correctly</h3>
+							  </div>
+							  <div class="panel-body">
+								<p> <span id="rightGuessContent"></span></p>
+							  </div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="panel panel-danger">
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Letters guessed incorrectly</h3>
+							  </div>
+							  <div class="panel-body">
+	  	     					<p><span id="wrongGuessContent"></span></p>
+							  </div>
+							</div>
+						</div>
 					</div>
 				</div>			
-				<div class="bottomSection">
-					<div class="panel panel-primary">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Number of guesses remaining</h3>
-					  </div>
-					  <div id="remainTriesContent" class="panel-body">
-					  	10
-					  </div>
+				<div class="row bottomSection">
+					<div class="col-md-4">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							    <h3 class="panel-title">Number of guesses remaining</h3>
+							</div>
+							<div id="remainTriesContent" class="panel-body">
+							  	10
+							</div>
+						</div>
 					</div>
-					<div class="panel panel-primary">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Number of wins</h3>
-					  </div>
-					  <div id="numWinsContent" class="panel-body">
-					  </div>
+					<div class="col-md-4">
+						<div class="panel panel-info">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Number of wins</h3>
+						  </div>
+						  <div id="numWinsContent" class="panel-body">
+						  </div>
+						</div>
 					</div>
-					<div class="panel panel-primary">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Number of losses</h3>
-					  </div>
-					  <div id="numLossesContent" class="panel-body">
-					  </div>
+					<div class="col-md-4">
+						<div class="panel panel-info">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Number of losses</h3>
+						  </div>
+						  <div id="numLossesContent" class="panel-body">
+						  </div>
+						</div>
 					</div>
-					<div class="panel panel-primary">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Game outcome</h3>
-					  </div>
-					  <div id="outcomeContent" class="panel-body">
-					  </div>
+				</div>
+				<div class="row results">
+					<div class="col-md-12">
+						<div class="panel panel-success">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Game outcome</h3>
+						  </div>
+						  <div id="outcomeContent" class="panel-body">
+						  </div>
+						</div>
 					</div>
 				</div>
 			</div>
