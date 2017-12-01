@@ -1,5 +1,5 @@
 //Global variables
-var numWins= 0;
+var numWins = 0;
 var numLosses = 0;
 var remainTries = 10;
 var outcome;
@@ -14,34 +14,42 @@ var userGuess;
 
 var randomWord = words [Math.floor(Math.random() * words.length)];
 
+var wrongGuessContent = document.getElementById("wrongGuessContent");
+var rightGuessContent = document.getElementById("rightGuessContent");
+var answerContent = document.getElementById("answerContent");
+var remainTriesContent = document.getElementById("remainTriesContent");
+var outcomeContent = document.getElementById("outcomeContent");
+var numWinsContent = document.getElementById("numWinsContent");
+var numLossesContent = document.getElementById("numLossesContent")
+
 //List of Functions:
 
 function generateWord() {
-	var randomWord = words [Math.floor(Math.random() * words.length)];
+	var randomWord = words[Math.floor(Math.random() * words.length)];
 };
 
 function generateUnderscore () {
 	for (var i = 0; i < randomWord.length; i++) {
 		answerArray.push('_');
-		document.getElementById("remainTries").textContent = remainTries;
 	}
-	document.getElementById("answerArray").textContent = answerArray.join(" ");
+	remainTries.textContent = remainTries;
+	answerArray.textContent = answerArray.join(" ");
 };
 
 function resetNextGame() {
 	document.onkeyup = function(event) {
-	userGuess = event.key;
-	if (event.keyCode = 12){
-		wrongGuessArray = [];
-		document.getElementById("wrongGuessArray").textContent = wrongGuessArray;
-		rightGuessArray = [];
-		document.getElementById("rightGuessArray").textContent = rightGuessArray;
-		answerArray = [];
-		document.getElementById("answerArray").textContent = answerArray;
-		remainTries = 10;
-		document.getElementById("remainTries").textContent = remainTries;
-		outcome = " ";
-		document.getElementById("outcome").textContent = outcome;
+		userGuess = event.key;
+		if (event.keyCode = 12){
+			wrongGuessArray = [];
+			rightGuessArray = [];
+			answerArray = [];
+			remainTries = 10;
+			outcome = " ";
+			wrongGuessContent.textContent = wrongGuessContent;
+			rightGuessContent.textContent = rightGuessContent;
+			answerContent.textContent = answerContent;
+			remainTriesContent.textContent = remainTries;
+			outcomeContent.textContent = outcome;
 		}
 	}
 };
@@ -61,49 +69,33 @@ function startGame(){
 						answerArray[j] = userGuess;	
 					}
 				}
-			document.getElementById("answerArray").textContent = answerArray.join(" ");
+			answerContent.textContent = answerArray.join(" ");
 			rightGuessArray.push(userGuess);
-			document.getElementById("rightGuessArray").textContent = rightGuessArray.join(" ");
+			rightGuessContent.textContent = rightGuessArray.join(" ");
 
-			}
-			else {
+			} else {
 				wrongGuessArray.push(userGuess);
-				document.getElementById("wrongGuessArray").textContent = wrongGuessArray.join(" ");
-				remainTries --;
-				document.getElementById("remainTries").textContent = remainTries;
+				remainTries--;
+				wrongGuessContent.textContent = wrongGuessArray.join(" ");
+				remainTriesContent.textContent = remainTries;
 			}
 
 			//Conditional statements for win and loss games:
 			if (answerArray.join("") === randomWord) {
 				numWins ++;
-				document.getElementById("numWins").textContent = numWins;
 		        outcome = "You won!";
-		        document.getElementById("outcome").textContent = outcome;
+		        numWinsContent.textContent = numWins;
+		        outcomeContent.textContent = outcome;
 		        resetNextGame();
-			}
-
-			else if (remainTries === 0) {
+			} else if (remainTries === 0) {
 				numLosses ++;
 		        outcome = "You lost!";
-		        document.getElementById("numLosses").textContent = numLosses;
-		        document.getElementById("outcome").textContent = outcome;
+		        numLossesContent.textContent = numLosses;
+		        outcomeContent.textContent = outcome;
 		        resetNextGame();
 		    }
-		else {
-			return;
-			}
 		}
 	}
 }
 
 startGame();
-
-
-/*
-	//After win or lose pick a new word display play new game button next to reset button
-
-	//Start Over: Make function that resets everythnig. 
-
-
-*/
-
