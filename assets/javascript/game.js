@@ -4,7 +4,6 @@ var hangManGame = {
 	remainTries: 10,
 	outcome: "",
 	currentWordPos: "",
-	userGuess: "",
 	randomWord: "",
 	gameOver: false,
 	words: ["BASKETBALL", "SOCCER", "BICYCLING", "SWIMMING", "GOLF", "BOWLING", "WRESTLING", "TENNIS", "KAYAKING", "HOCKEY"],
@@ -55,10 +54,8 @@ var hangManGame = {
 		this.generateWord();
 		this.generateUnderscore();
 
-		var thisGame = this;
-
 		document.onkeyup = function(event) {
-			this.userGuess = event.key.toUpperCase();
+			var userGuess = event.key.toUpperCase();
 			
 			if (event.keyCode === 83 && this.gameOver == true){
 				this.resetNextGame();
@@ -67,18 +64,18 @@ var hangManGame = {
 			
 			else if (event.keyCode >= 65 && event.keyCode <= 90 && this.gameOver == false){
 				//Conditional statements for right and wrong guesses:
-				if (this.randomWord.indexOf(this.userGuess) > -1) {
+				if (this.randomWord.indexOf(userGuess) > -1) {
 					for (var j = 0; j < this.randomWord.length; j++){
-						if (this.randomWord[j] === this.userGuess) {
-							this.answerArray[j] = this.userGuess;	
+						if (this.randomWord[j] === userGuess) {
+							this.answerArray[j] = userGuess;	
 						}
 					}
-					this.rightGuessArray.push(this.userGuess);
+					this.rightGuessArray.push(userGuess);
 					this.answerContent.textContent = this.answerArray.join(" ");
 					this.rightGuessContent.textContent = this.rightGuessArray.join(" ");
 
 				} else {
-					this.wrongGuessArray.push(this.userGuess);
+					this.wrongGuessArray.push(userGuess);
 					this.remainTries--;
 					this.wrongGuessContent.textContent = this.wrongGuessArray.join(" ");
 					this.remainTriesContent.textContent = this.remainTries;
