@@ -40,3 +40,13 @@ footer p {
 	padding: 10px;
 }
 
+.image {
+    background-image: url(../images/hangmanImage.jpg);
+    background-repeat: no-repeat, repeat;
+    background-position: 0px 0px;
+    height: 150px;
+    width: 160px;
+	margin: 0 auto;
+}
+
+
