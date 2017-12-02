@@ -63,7 +63,15 @@ var hangManGame = {
 			}
 			
 			else if (event.keyCode >= 65 && event.keyCode <= 90 && this.gameOver == false){
-				//Conditional statements for right and wrong guesses:
+				if (this.wrongGuessArray.includes(userGuess) || this.rightGuessArray.includes(userGuess)){
+					this.outcome = "You already guessed this letter. Please guess another one.";
+					this.outcomeContent.textContent = this.outcome;
+					return;
+				}
+
+				this.outcome = "";
+				this.outcomeContent.textContent = this.outcome;
+
 				if (this.randomWord.indexOf(userGuess) > -1) {
 					for (var j = 0; j < this.randomWord.length; j++){
 						if (this.randomWord[j] === userGuess) {
