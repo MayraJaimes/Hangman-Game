@@ -1,7 +1,12 @@
 body {
 	text-align: center;
+	background-image: url("../images/backgroundPattern.jpg");
 }
 
 .description p {
 	font-size: 30px;
+}
+
+.bottomSection {
+	margin-bottom: 20px;
 }
