@@ -1,7 +1,7 @@
 var hangManGame = {
 	numWins: 0,
 	numLosses: 0,
-	remainTries: 10,
+	remainTries: 7,
 	outcome: "",
 	currentWordPos: "",
 	randomWord: "",
@@ -10,6 +10,7 @@ var hangManGame = {
 	answerArray: [],
 	wrongGuessArray: [],
 	rightGuessArray: [],
+	imagePos: document.getElementById("image"),
 	wrongGuessContent: document.getElementById("wrongGuessContent"),
 	rightGuessContent: document.getElementById("rightGuessContent"),
 	answerContent: document.getElementById("answerContent"),
@@ -35,18 +36,30 @@ var hangManGame = {
 		this.answerContent.innerHTML = this.answerArray.join(" ");
 	},
 
+	hangManImgPosition: function(x) {
+		if (this.remainTries >= 4) {
+			x = 7-this.remainTries;
+			this.imagePos.style.backgroundPosition = -x*160 + "px 0px";
+		} 
+		else {
+			x = this.remainTries-3;
+			this.imagePos.style.backgroundPosition = x*160 + "px -150px";
+		}
+	},
+
 	resetNextGame: function() {
 		this.gameOver = false;	
 		this.wrongGuessArray = [];
 		this.rightGuessArray = [];
 		this.answerArray = [];
-		this.remainTries = 10;
+		this.remainTries = 7;
 		this.outcome = " ";
 		this.wrongGuessContent.innerHTML = this.wrongGuessArray;
 		this.rightGuessContent.innerHTML = this.rightGuessArray;
 		this.answerContent.innerHTML = this.answerArray;
 		this.remainTriesContent.innerHTML = this.remainTries;
 		this.outcomeContent.innerHTML = this.outcome;
+		this.hangManImgPosition(0);
 	},
 
 	startGame: function() {
@@ -56,7 +69,6 @@ var hangManGame = {
 
 		document.onkeyup = function(event) {
 			var userGuess = event.key.toUpperCase();
-			
 			if (event.keyCode === 83 && this.gameOver == true){
 				this.resetNextGame();
 				this.startGame();
@@ -87,6 +99,7 @@ var hangManGame = {
 					this.remainTries--;
 					this.wrongGuessContent.innerHTML = this.wrongGuessArray.join(" ");
 					this.remainTriesContent.innerHTML = this.remainTries;
+					this.hangManImgPosition(0);
 				}
 				//Conditional statements for win and loss games:
 				if (this.answerArray.join("") === this.randomWord) {
@@ -108,4 +121,12 @@ var hangManGame = {
 };
 
 hangManGame.startGame();
+
+
+
+
+
+
+
+
 
