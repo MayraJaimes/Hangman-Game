@@ -30,20 +30,22 @@ var hangManGame = {
 	},
 
 	generateUnderscore: function() {
+		var html = "";
 		for (var i = 0; i < this.randomWord.length; i++) {
-			this.answerArray.push('_');
+			this.answerArray.push('_')
+			html += '<span class= "letters">' + this.answerArray[i] + '</span>';
 		}
-		this.answerContent.innerHTML = this.answerArray.join(" ");
+		this.answerContent.innerHTML = html;
 	},
 
 	hangManImgPosition: function(x) {
 		if (this.remainTries >= 4) {
 			x = 7-this.remainTries;
-			this.imagePos.style.backgroundPosition = -x*160 + "px 0px";
+			this.imagePos.style.backgroundPosition = -x*162.16 + "px 0px";
 		} 
 		else {
 			x = this.remainTries-3;
-			this.imagePos.style.backgroundPosition = x*160 + "px -150px";
+			this.imagePos.style.backgroundPosition = x*162.16 + "px -165px";
 		}
 	},
 
@@ -80,18 +82,19 @@ var hangManGame = {
 					this.outcomeContent.innerHTML = this.outcome;
 					return;
 				}
-
 				this.outcome = "";
-				this.outcomeContent.innerHTML = this.outcome;
 
 				if (this.randomWord.indexOf(userGuess) > -1) {
+					var html = "";
 					for (var j = 0; j < this.randomWord.length; j++){
+
 						if (this.randomWord[j] === userGuess) {
-							this.answerArray[j] = userGuess;	
+							this.answerArray[j] = userGuess;
 						}
+						html += '<span class="lettersCompleted">' + (this.answerArray[j]) + '</span>';
 					}
+					this.answerContent.innerHTML = html;
 					this.rightGuessArray.push(userGuess);
-					this.answerContent.innerHTML = this.answerArray.join(" ");
 					this.rightGuessContent.innerHTML = this.rightGuessArray.join(" ");
 
 				} else {
@@ -100,21 +103,22 @@ var hangManGame = {
 					this.wrongGuessContent.innerHTML = this.wrongGuessArray.join(" ");
 					this.remainTriesContent.innerHTML = this.remainTries;
 					this.hangManImgPosition(0);
-				}
-				//Conditional statements for win and loss games:
+				};
+
 				if (this.answerArray.join("") === this.randomWord) {
 					this.numWins ++;
 			        this.outcome = 'YOU WON! Press "s" to play another word';
 			        this.gameOver = true;
 			        this.numWinsContent.innerHTML = this.numWins;
 			        this.outcomeContent.innerHTML = this.outcome;
+			        
 				} else if (this.remainTries === 0) {
 					this.numLosses ++;
 			        this.outcome = 'YOU LOST! Press "s" to play another word';
 			        this.gameOver = true;
 			        this.numLossesContent.innerHTML = this.numLosses;
 			        this.outcomeContent.innerHTML = this.outcome;
-			    }
+			    };
 			}
 		}.bind(this)
 	}
