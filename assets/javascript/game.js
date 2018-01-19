@@ -21,6 +21,7 @@ var hangManGame = {
 
 	generateWord: function() {
 	  var wordPos = Math.floor(Math.random() * this.words.length);
+	  console.log(wordPos);
 	  if (this.currentWordPos === wordPos) {
 	    generateWord();
 	  } else {
