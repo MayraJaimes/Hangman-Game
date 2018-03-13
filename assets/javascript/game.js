@@ -1,7 +1,7 @@
 var hangManGame = {
 	numWins: 0,
 	numLosses: 0,
-	remainTries: 7,
+	remainTries: 9,
 	outcome: "",
 	currentWordPos: "",
 	randomWord: "",
@@ -40,14 +40,8 @@ var hangManGame = {
 	},
 
 	hangManImgPosition: function(x) {
-		if (this.remainTries >= 4) {
-			x = 7-this.remainTries;
-			this.imagePos.style.backgroundPosition = -x*162.16 + "px 0px";
-		} 
-		else {
-			x = this.remainTries-3;
-			this.imagePos.style.backgroundPosition = x*162.16 + "px -165px";
-		}
+		x = this.remainTries;
+		this.imagePos.src=`assets/images/img${x}.jpg`;
 	},
 
 	resetNextGame: function() {
@@ -55,14 +49,14 @@ var hangManGame = {
 		this.wrongGuessArray = [];
 		this.rightGuessArray = [];
 		this.answerArray = [];
-		this.remainTries = 7;
+		this.remainTries = 9;
 		this.outcome = " ";
 		this.wrongGuessContent.innerHTML = this.wrongGuessArray;
 		this.rightGuessContent.innerHTML = this.rightGuessArray;
 		this.answerContent.innerHTML = this.answerArray;
 		this.remainTriesContent.innerHTML = this.remainTries;
 		this.outcomeContent.innerHTML = this.outcome;
-		this.hangManImgPosition(0);
+		this.hangManImgPosition(9);
 	},
 
 	startGame: function() {
@@ -103,7 +97,7 @@ var hangManGame = {
 					this.remainTries--;
 					this.wrongGuessContent.innerHTML = this.wrongGuessArray.join(" ");
 					this.remainTriesContent.innerHTML = this.remainTries;
-					this.hangManImgPosition(0);
+					this.hangManImgPosition(9);
 				};
 
 				if (this.answerArray.join("") === this.randomWord) {

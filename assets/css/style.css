@@ -1,68 +1,54 @@
-html {
-	position: relative;
-	min-height: 100%;
-}
-
 body {
-	margin-bottom: 40px;
 	text-align: center;
 	background-image: url("../images/backgroundPattern.jpg");
+	font-family: 'PT Sans', sans-serif;
 }
 
-.description p {
-	font-size: 50px;
+header {
+	padding: 10px;
+	width: 50%;
+	margin: 10px auto;
 }
 
-.bottomSection {
-	margin-bottom: 20px;
-}
-
-footer {
-	margin-top: 40px;
-	background-color: #eee;
-	height: 40px;
-}
-
-footer p {
-	margin-bottom: 0;
-	padding-top: 10px;
-}
-
-#answerContent {
-	font-size: 30px;
-}
-
-.middleSection .panel {
-	margin-top: 30px;
-}
-
-.container .jumbotron {
+h1 {
+	font-size: 2em;
 	padding: 10px;
 }
 
+h3 {
+	font-size: 1.5em;
+	padding: 10px;
+}
+
+.score {
+    display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 2px;
+	margin: 25px;
+}
+
+.results {
+	width: 50%;
+	margin: 10px auto;
+	font-size: 1.5em;
+}
+
+#answerContent {
+	font-size: 1.5em;
+}
+
 #image {
-    background-image: url(../images/hangmanImage.jpg);
-    background-repeat: no-repeat, repeat;
-    background-position: 0px 0px;
     height: 150px;
     width: 160px;
-	margin: 0 auto;
+	margin: 10px auto;
+	border: 5px white solid;
 }
 
-.letters {
-	border: 2px black solid;
-	margin: 10px;
-	padding: 20px 20px 10px 20px;
-}
-
-.lettersCompleted {
-	border: 2px black solid;
+.lettersCompleted, .letters {
 	margin: 10px;
 	padding: 20px 20px 10px 20px;
 }
 
 .wordGenerated {
-	padding: 30px 0 30px 0;
+	padding: 30px 0;
 }
-
-
