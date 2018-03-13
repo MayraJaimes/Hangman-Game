@@ -41,7 +41,7 @@ h3 {
     height: 150px;
     width: 160px;
 	margin: 10px auto;
-	border: 5px white solid;
+	border: 2px black solid;
 }
 
 .lettersCompleted, .letters {
