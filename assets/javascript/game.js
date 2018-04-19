@@ -41,7 +41,7 @@ var hangManGame = {
 
 	hangManImgPosition: function(x) {
 		x = this.remainTries;
-		this.imagePos.src=`assets/images/img${x}.jpg`;
+		this.imagePos.src=`assets/images/img${x}.JPG`;
 	},
 
 	resetNextGame: function() {
